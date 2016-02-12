@@ -29,6 +29,9 @@
 		81CEC1F21C68D3EB004DCF91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81CEC1F11C68D3EB004DCF91 /* Images.xcassets */; };
 		81CEC1F51C68D3EB004DCF91 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81CEC1F31C68D3EB004DCF91 /* LaunchScreen.xib */; };
 		81CEC2011C68D3EB004DCF91 /* PassionProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CEC2001C68D3EB004DCF91 /* PassionProjectTests.m */; };
+		81D8581D1C6D4E6800E62A79 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8581C1C6D4E6800E62A79 /* LeftViewController.m */; };
+		81D858201C6D4E9A00E62A79 /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8581F1C6D4E9A00E62A79 /* LeftViewCell.m */; };
+		81F59EC31C6BF36D0045D000 /* WorldNewsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F59EC21C6BF36D0045D000 /* WorldNewsData.m */; };
 		DFD9CA169F8C508C61EBFF3E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 745D2D6104EC7C883B7F3858 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,12 @@
 		81CEC1FA1C68D3EB004DCF91 /* PassionProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassionProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CEC1FF1C68D3EB004DCF91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81CEC2001C68D3EB004DCF91 /* PassionProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PassionProjectTests.m; sourceTree = "<group>"; };
+		81D8581B1C6D4E6800E62A79 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		81D8581C1C6D4E6800E62A79 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		81D8581E1C6D4E9A00E62A79 /* LeftViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCell.h; sourceTree = "<group>"; };
+		81D8581F1C6D4E9A00E62A79 /* LeftViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
+		81F59EC11C6BF36D0045D000 /* WorldNewsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldNewsData.h; sourceTree = "<group>"; };
+		81F59EC21C6BF36D0045D000 /* WorldNewsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldNewsData.m; sourceTree = "<group>"; };
 		CC472BFFB76083985F949091 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F5FA0882AB894BC59AB92604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +117,8 @@
 		816A61FB1C69709600C4131E /* PassionProjectScreens */ = {
 			isa = PBXGroup;
 			children = (
+				81F59EC11C6BF36D0045D000 /* WorldNewsData.h */,
+				81F59EC21C6BF36D0045D000 /* WorldNewsData.m */,
 				816A61F41C695D1300C4131E /* WorldNewsVC.h */,
 				816A61F51C695D1300C4131E /* WorldNewsVC.m */,
 				816A61F61C695D1300C4131E /* WorldNewsVC.xib */,
@@ -163,6 +174,7 @@
 				816A62061C69942000C4131E /* MenuImages */,
 				81CEC1E81C68D3EA004DCF91 /* AppDelegate.h */,
 				81CEC1E91C68D3EA004DCF91 /* AppDelegate.m */,
+				81D8581A1C6D4E3F00E62A79 /* LGSideMenu */,
 				816A61FB1C69709600C4131E /* PassionProjectScreens */,
 				816A61F91C69707B00C4131E /* MDMenuViewController classes */,
 				81CEC1EE1C68D3EB004DCF91 /* Main.storyboard */,
@@ -197,6 +209,17 @@
 				81CEC1FF1C68D3EB004DCF91 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81D8581A1C6D4E3F00E62A79 /* LGSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				81D8581B1C6D4E6800E62A79 /* LeftViewController.h */,
+				81D8581C1C6D4E6800E62A79 /* LeftViewController.m */,
+				81D8581E1C6D4E9A00E62A79 /* LeftViewCell.h */,
+				81D8581F1C6D4E9A00E62A79 /* LeftViewCell.m */,
+			);
+			name = LGSideMenu;
 			sourceTree = "<group>";
 		};
 		A966ED024EDAD988FE6FF4E0 /* Pods */ = {
@@ -375,8 +398,11 @@
 				81CEC1EA1C68D3EA004DCF91 /* AppDelegate.m in Sources */,
 				816A62041C698E3A00C4131E /* CountryRiskProfileVC.m in Sources */,
 				816A61F71C695D1300C4131E /* WorldNewsVC.m in Sources */,
+				81F59EC31C6BF36D0045D000 /* WorldNewsData.m in Sources */,
+				81D8581D1C6D4E6800E62A79 /* LeftViewController.m in Sources */,
 				81CEC1E71C68D3EA004DCF91 /* main.m in Sources */,
 				816A61FF1C698DB400C4131E /* WhirlyGlobeVC.m in Sources */,
+				81D858201C6D4E9A00E62A79 /* LeftViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

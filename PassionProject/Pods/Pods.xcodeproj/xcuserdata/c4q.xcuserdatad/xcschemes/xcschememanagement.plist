@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LGSideMenuController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +27,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05BDEE76740EB47A3C3F376B234E473A</key>
+		<key>0D43B5CB7A52D3A6A07D16A1F136E943</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71B76793A3B7514D38CE8C93A9B8C8F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF1D93A12A87DC77E18EB8F2BBC19EB6</key>
+		<key>F671C531A91E914C0904593C24B56439</key>
 		<dict>
 			<key>primary</key>
 			<true/>

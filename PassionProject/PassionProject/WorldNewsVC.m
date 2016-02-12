@@ -7,14 +7,21 @@
 //
 
 #import "WorldNewsVC.h"
+#import "WorldNewsData.h"
 #import <AFNetworking/AFNetworking.h>
 #import <RPSlidingMenu/RPSlidingMenu.h>
+#import "LeftViewController.h"
+#import <LGSideMenuController/LGSideMenuController.h>
 
 @interface WorldNewsVC ()
-@property(nonatomic)NSString *titleString;
-@property(nonatomic)NSString *snippetText;
-@property(nonatomic)NSString *dateString;
+
+//@property(nonatomic)NSString *titleString;
+//@property(nonatomic)NSString *snippetText;
+//@property(nonatomic)NSString *dateString;
+@property (nonatomic) WorldNewsData *data;
+@property (nonatomic) NSMutableArray *searchResults;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) LeftViewController *leftViewController;
 
 @end
 
@@ -32,13 +39,49 @@
 //                                                            NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:17.0f]}];
     
     //RPSliding Menu
-    self.featureHeight = 200.0f;
-    self.collapsedHeight = 100.0f;
+//    self.featureHeight = 200.0f;
+//    self.collapsedHeight = 100.0f;
     
     [self nprJson]; 
 }
 
-#pragma mark- API call
+//#pragma mark- BreakingBad API call
+//-(void)nprJson {
+//
+//    NSString *url = [NSString stringWithFormat:@"http://api.npr.org/query?id=1122,1004&fields=title,teaser,storyDate,text,image&requiredAssets=text&dateType=story&output=JSON&numResults=10&apiKey=MDIyNTg2ODAxMDE0NTQ1OTU1NTU1N2E2Ng000"];
+//    
+//    NSString *encodedString = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//    
+//    
+//    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+//    
+//    [manager GET:encodedString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//        
+//
+//         //NSArray *posts = [responseObject objectForKey:@"data"];
+//
+//         NSDictionary *lists = [responseObject objectForKey:@"list"];
+//
+//         NSArray *posts = [lists objectForKey:@"story"];
+//         
+//        self.searchResults = [[NSMutableArray alloc] init];
+//
+//         for (NSDictionary *post in posts) {
+//             
+//             // create new post from json
+//             WorldNewsData *data = [[WorldNewsData alloc] initWithJSON:post];
+//             // add post to array
+//             [self.searchResults addObject:data];
+//             NSLog(@"This is the world news data: %@",data);
+//         }
+//        
+//         NSLog(@"%@", lists);
+//         
+//    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+//        NSLog(@"Error: %@", error.localizedDescription);
+//        // block();
+//    }];
+//}
 
 -(void)nprJson {
 AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -54,23 +97,37 @@ AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
          
          NSArray *posts = [lists objectForKey:@"story"];
          
+         self.searchResults = [[NSMutableArray alloc] init];
+         
          for (NSDictionary *post in posts) {
              
              //Story Title
              NSDictionary *title = [post objectForKey:@"title"];
-             self.titleString = [title objectForKey:@"$text"];
-             NSLog(@"%@", self.titleString);
+             NSString * titleString = [title objectForKey:@"$text"];
+             NSLog(@"%@", titleString);
              
              //Story Snippet
              NSDictionary *snippet = [post objectForKey:@"teaser"];
-             self.snippetText = [snippet objectForKey:@"$text"];
-             NSLog(@"%@", self.snippetText);
+             NSString *snippetText = [snippet objectForKey:@"$text"];
+             NSLog(@"%@", snippetText);
              
              //Story Date
              NSDictionary *storyDate = [post objectForKey:@"storyDate"];
-             self.dateString = [storyDate objectForKey:@"$text"];
-             NSLog(@"%@", self.dateString);
+             NSString *dateString = [storyDate objectForKey:@"$text"];
+             NSLog(@"%@", dateString);
              
+             //create new post from json
+//             WorldNewsData *data = [[WorldNewsData alloc] initWithJSON:post];
+//             // add post to array
+//             [self.searchResults addObject:data];
+//             NSLog(@"This is the world news data: %@",data);
+             
+             WorldNewsData *data = [[WorldNewsData alloc] init];
+             data.titleString = titleString;
+             data.snippetText = snippetText;
+             data.dateString = dateString;
+
+              [self.searchResults addObject:data];
          }
          
      }
@@ -81,6 +138,20 @@ AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
      }];
 
 }
+
+#pragma mark- LGSideMenuController
+//- (instancetype)initWithRootViewController:(UIViewController *)rootViewController
+//                         presentationStyle:(LGSideMenuPresentationStyle)style
+//                                      type:(NSUInteger)type
+//{
+////    self = [super initWithRootViewController:rootViewController];
+////    if (self)
+////    {
+////        _type = type;
+//    
+//        // -----
+//        
+//        _leftViewController = [LeftViewController new];
 
 
 #pragma mark- MDMenuViewController
@@ -104,11 +175,16 @@ AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 }
 
 - (void)customizeCell:(RPSlidingMenuCell *)slidingMenuCell forRow:(NSInteger)row{
+
     
-        slidingMenuCell.textLabel.text = self.titleString;
+    WorldNewsData *data = self.searchResults[row];
+
+    slidingMenuCell.textLabel.text = data.titleString;
+    NSLog(@"%@", data.titleString);
     slidingMenuCell.textLabel.textColor = [UIColor blackColor];
     
-        slidingMenuCell.detailTextLabel.text = self.snippetText;
+        slidingMenuCell.detailTextLabel.text = data.snippetText;
+     NSLog(@"%@", data.snippetText);
         slidingMenuCell.backgroundImageView.image = [UIImage imageNamed:@"grayBackground"];
 
 }
@@ -117,8 +193,8 @@ AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [super slidingMenu:slidingMenu didSelectItemAtRow:row];
     
-    self.featureHeight = 250.0f;
-    self.collapsedHeight = 120.0f;
+    self.featureHeight = 240.0f;
+    self.collapsedHeight = 110.0f;
     
 }
 

@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "RPSlidingMenu.h"
-//#import "MDMenuViewController classes/MDMenuViewController.h"
+#import "MDMenuViewController classes/MDMenuViewController.h"
 
 
-@interface WorldNewsVC : RPSlidingMenuViewController
+
+@interface WorldNewsVC : RPSlidingMenuViewController 
 
 
 //MDMenuViewController
 //RPSlidingMenuViewController
 
 //RPSlidingMenuLayoutDelegate, MDMenuViewControllerDelegate>
+
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController;
 
 @end
